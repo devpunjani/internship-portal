@@ -21,7 +21,8 @@ The **Internship Portal** is a web application designed to connect students with
   - Verify Users & Internship Listings
 
 ## 🛠️ Technologies Used
+## 🛠️ Technologies Used
+- **Backend:** Python - Django Framework 🐍  
 - **Frontend:** HTML5, CSS4, Bootstrap 5, JavaScript  
-- **Backend:** Python (Django Framework)  
-- **Database:** MySQL 8.0  
+- **Database:** MySQL 8.0    
 - **Tools:** Visual Studio Code  
