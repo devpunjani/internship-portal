@@ -1,0 +1,28 @@
+{% extends '../Layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Add Industry{% endblock %}
+{% block head %}  
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+{% endblock %}
+
+{% block open-industry %}nav-item menu-open {% endblock %}
+{% block open-create %}nav-link active {% endblock %}
+
+{% block subtitle %}
+<h1><b>Add Industry</b></h1>
+{% endblock %}
+
+{% block content %}
+<div class="class col-12">
+    <div class="card-body">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            {{ forms | crispy }}
+            <input type="submit" value="Submit" class="btn btn-primary">
+        </form>
+    </div>
+</div>
+{% endblock  %}

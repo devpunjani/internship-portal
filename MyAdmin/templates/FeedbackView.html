@@ -1,0 +1,36 @@
+{% extends 'Layout.html' %}
+{% load static %}
+
+{% block title %}Feedbacks{% endblock %} 
+{% block head %}  
+
+{% endblock %}
+
+{% block open-feedback %}nav-item menu-open{% endblock %}
+
+{% block subtitle %}
+<h1><b>Feedbacks</b></h1>
+{% endblock %}
+
+{% block content %}
+<table class="table table-bordered" id="example1">
+    <thead>
+        <tr>
+            <th style="width: 15%"><center> Name </center></th>
+            <th style="width: 20%"><center> Email </center></th>
+            <th style="width: 15%"><center> Phone </center></th>
+            <th style="width: 50%"><center> Message </center></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for data in feedbacks %}
+            <tr>
+                <td><center> {{ data.name }} </center></td>
+                <td><center> {{ data.email }} </center></td>
+                <td><center> {{ data.phone }} </center></td>
+                <td style="white-space: normal;"><center> {{ data.message }} </center></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

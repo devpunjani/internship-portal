@@ -1,0 +1,42 @@
+{% extends 'Layout.html' %}
+{% load static %}
+
+{% block title %}Bulk Upload{% endblock %} 
+{% block head %} 
+<style>
+    input[type=file]::file-selector-button {
+        margin-right: 20px;
+        border: none;
+        background: #084cdf;
+        padding: 10px 20px;
+        border-radius: 10px;
+        color: #fff;
+        cursor: pointer;
+        transition: background .2s ease-in-out;
+      }
+      
+      input[type=file]::file-selector-button:hover {
+        background: #0d45a5;
+      }
+</style> 
+{% endblock %}
+
+{% block open-industry %}nav-item menu-open{% endblock %}
+{% block open-bulk %}nav-link active {% endblock %}
+
+{% block subtitle %}
+<h1><b>Bulk Upload</b></h1>
+{% endblock %}
+
+{% block content %}
+<div>   
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <input type="file" name="csv_file" required>
+        <br><br>
+        
+        <button type="submit" class="btn btn-primary" style="font-size:20px;border-radius:10px;width:300px;height:50px">Upload</button>
+    </form>
+</div>
+{% endblock %}

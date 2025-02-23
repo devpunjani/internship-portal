@@ -1,0 +1,52 @@
+{% extends '../Layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Verified Students{% endblock %}
+{% block head %}  
+
+{% endblock %}
+
+{% block open-student %}nav-item menu-open {% endblock %}
+{% block open-create1 %}nav-link active {% endblock %}
+
+{% block subtitle %}
+<h1><b>Verified Students</b></h1>
+{% endblock %}
+
+{% block content %}
+<table class="table table-bordered" id="example1">
+    <thead>
+        <tr>
+            <th style="width: auto"><center> Username</center></th>
+            <th style="width: auto"><center> First Name </center></th>
+            <th style="width: auto"><center> Last Name </center></th>
+            <th style="width: auto"><center> Phone </center></th>
+            <th style="width: auto"><center> Email </center></th>
+            <th style="width: 15%"><center> Image </center></th>
+            <th style="width: 15%"><center> Action </center></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for data in students %}
+            <tr>
+                <td><center> {{ data.username }} </center></td>
+                <td><center> {{ data.StudentDetails.first_name }} </center></td>
+                <td><center> {{ data.StudentDetails.last_name }} </center></td>
+                <td><center> {{ data.phone }} </center></td>
+                <td><center> {{ data.email }} </center></td>
+                {% if data.StudentDetails.studentPhoto is not None and data.StudentDetails.studentPhoto != "" %}
+                    <td><center> <img src="/{{ data.StudentDetails.studentPhoto }}" width="80px" width="80px" style="border-radius:15px"> </center></td>
+                {% else %}
+                    <td><center>  </center></td>
+                {% endif %}
+                <td>
+                <center>
+                <a href="{% url 'UnverifyStudent' data.id %}" class="btn btn-danger btn-sm " style="font-size:18px"> Disapprove </i></a>
+                </center>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock  %}

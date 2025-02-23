@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+{% load static %}
+{% load crispy_forms_tags %}
+<head>
+    <title>Student Register</title>
+    <link rel="stylesheet" href="{% static 'register/style.css' %}">
+   
+    <style>
+        input::file-selector-button {
+            
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+            margin-left:-20px;
+            background-position-x: 0%;
+            background-size: 200%;
+            border: 0;
+            border-radius: 8px;
+            color:#fff;
+            padding: 0.8rem 1rem;
+            text-shadow: 0 1px 1px #333;
+            transition: all 0.25s;
+          }
+          input::file-selector-button:hover {
+            background-position-x: 100%;
+            transform: scale(1.1);
+          }
+    </style>
+</head>
+<body>
+    
+<div class="container">
+    <div class="title">Student Register</div>
+        <div class="content">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="user-details">
+                    <div class="input-box" style="width:100%;">
+                        <span class="details">Username</span>
+                        <input type="text" placeholder="Enter Your Username" name="username" required>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">First Name</span>
+                        <input type="text" placeholder="Enter First Name" name="first_name" required>
+                    </div>
+                    
+                    <div class="input-box">
+                        <span class="details">Last Name</span>
+                        <input type="text" placeholder="Enter Last Name" name="last_name" required>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">Phone</span>
+                        <input type="text" placeholder="Enter Your Phone" name="phone" required>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">Email</span>
+                        <input type="email" placeholder="Enter Your Email" name="email" required>
+                    </div>
+                    
+                    <div class="input-box">
+                        <span class="details">Password</span>
+                        <input type="password" placeholder="Enter Your Password" name="password1" required>
+                    </div>
+                    
+                    <div class="input-box">
+                        <span class="details">Password Confirmation</span>
+                        <input type="password" placeholder="Confirm Your Password" name="password2" required>
+                    </div>
+                    
+                    <div class="input-box">
+                        <span class="details">Student Photo</span>
+                        <input type="file" name="studentPhoto">
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">Student Resume</span>
+                        <input type="file"  name="studentResume">
+                    </div>
+                </div>
+
+                <div class="button">
+                    <input type="submit" value="Register">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

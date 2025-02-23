@@ -1,0 +1,88 @@
+{% extends 'Layout.html' %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %} 
+{% block head %}  
+
+{% endblock %}
+
+{% block open-dashboard %}nav-item menu-open{% endblock %}
+
+{% block subtitle %}
+<h1><b>Dashboard</b></h1>
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+
+    <div class="col-lg-3 col-6">
+      <div class="small-box bg-success">
+        <div class="inner">
+          <h3>{{industry_count}}</h3>
+          <p>Total Industries</p>
+        </div>
+        <div class="icon">
+          <i class="fas fa-solid fa-industry"></i>
+        </div>
+        <a href="{% url 'ViewIndustry' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-6">
+      <div class="small-box bg-warning">
+        <div class="inner">
+          <h3>{{student_count}}</h3>
+          <p>Total Students</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-person-add"></i>
+        </div>
+        <a href="{% url 'ViewStudent' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-6">
+      <div class="small-box bg-danger">
+        <div class="inner">
+          <h3>{{company_count}}</h3>
+          <p>Total Companies</p>
+        </div>
+        <div class="icon">
+          <i class="fas fa-solid fa-building"></i>
+        </div>
+        <a href="{% url 'ViewCompany' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-6">
+      <div class="small-box bg-info">
+        <div class="inner">
+          <h3>{{internship_count}}</h3>
+          <p>Total Internships</p>
+        </div>
+        <div class="icon">
+          <i class="fas fa-solid fa-envelope"></i>
+        </div>
+        <a href="{% url 'ViewInternshipAdmin' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-lg-3 col-6">
+      <div class="small-box bg-purple">
+        <div class="inner">
+          <h3>{{feedback_count}}</h3>
+          <p>Total Feedbacks</p>
+        </div>
+        <div class="icon">
+          <i class="fas fa-solid fa-comment"></i>
+        </div>
+        <a href="{% url 'ViewFeedbacks' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+
+  </div>
+{% endblock %}

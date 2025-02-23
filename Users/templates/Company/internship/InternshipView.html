@@ -1,0 +1,77 @@
+{% extends '../Layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}View Internship{% endblock %}
+{% block head %}  
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+
+<!-- DataTables JS -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+{% endblock %}
+
+{% block open-internship %}nav-item menu-open {% endblock %}
+{% block open-first %}nav-link active {% endblock %}
+
+{% block subtitle %}
+<h1><b>View Internship</b></h1>
+{% endblock %}
+
+{% block content %}
+<table class="table table-bordered" id="example1">
+    <thead>
+        <tr>
+            <th style="width: auto"><center> Id </center></th>
+            <th style="width: auto"><center> Title </center></th>
+            <th style="width: auto"><center> Location </center></th>
+            <th style="width: auto"><center> Type </center></th>
+            <th style="width: auto"><center> Skills </center></th>
+            <th style="width: auto"><center> Description </center></th>
+            <th style="width: auto"><center> Stipend </center></th>
+            {% comment %} <th style="width: auto"><center> Status </center></th>
+            <th style="width: auto"><center> Verified </center></th> {% endcomment %}
+            <th style="width: auto"><center> Industry </center></th>
+            <th style="width: auto"><center> Company Name </center></th>
+            <th style="width: 18%"><center> Action </center></th>           
+        </tr>
+    </thead>
+    <tbody>
+        {% for data in internships %}
+            <tr>
+                <td><center> {{ data.id }} </center></td>
+                <td><center> {{ data.title }} </center></td>
+                <td><center> {{ data.location }} </center></td>
+                <td><center> {{ data.type }} </center></td>
+                <td><center> {{ data.skills }} </center></td>
+                <td><center> {{ data.description }} </center></td>
+                <td><center> {{ data.stipend }} </center></td>
+                {% comment %} <td><center> {{ data.status }} </center></td>
+                <td><center> {{ data.verified }} </center></td> {% endcomment %}
+                <td><center> {{ data.IndustryModel.name }} </center></td>
+                <td><center> {{ data.UserModel.CompanyDetails.company_name }} </center></td>
+                <td>
+                    <center>
+                    <a href="{% url 'EditInternship' data.id %}" class="btn btn-info btn-sm " style="font-size:18px"> Edit</i></a>
+                    <a href="{% url 'DeleteInternship' data.id %}" onclick="return confirm('Are You Sure You Want To Delete This Item ?');" class="btn btn-danger btn-sm" style="font-size:18px"> Delete</i></a>
+                    {% if data.verified == 1 %}
+                        <div style="margin-top:5px">
+                            {% if data.status == 1 %}
+                                <a href="{% url 'InactiveInternship' data.id %}" onclick="return confirm('Are You Sure You Want To Inactive This Internship ?');" class="btn btn-warning btn-sm" style="font-size:18px"> Inactive</i></a>    
+                            {% else %}
+                                <a href="{% url 'ActiveInternship' data.id %}" class="btn btn-success btn-sm" style="font-size:18px"> Active</i></a>    
+                            {% endif %}
+                            <a href="{% url 'CandidateView' data.id %}" class="btn btn-primary btn-sm" style="font-size:18px"> Candidates </i></a>    
+                        </div>
+                    {% endif %}
+                    
+                    </center>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock  %}

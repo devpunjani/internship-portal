@@ -1,0 +1,78 @@
+{% extends 'Index.html' %}
+{% load static %}
+{% block title %}Internships{% endblock %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'admin/plugins/fontawesome-free/css/all.min.css' %}">
+{% endblock %}
+
+{% block content %}
+<div style="margin-top:100px;">
+    <div class="container" >
+      <div class="row justify-content-center pb-3">
+        <div class="col-md-12 heading-section ftco-animate">
+          <center><h2 class="mb-4">Search Internships</h2></center>
+        </div>
+      </div>
+                  
+        <div class="row">
+            {% for data in internships %}
+                <div class="col-md-12 ftco-animate">
+                    <div class="job-post-item p-4 d-block d-lg-flex align-items-center">
+                    
+                    <div class="one-third mb-4 mb-md-0">
+    
+                        <div class="job-post-item-header align-items-center">
+                        <span class="subadge">{{ data.type }}</span>
+                        <h2 class="mr-3 text-black"><a href="#">{{ data.title }}</a></h2>
+                        </div>
+                        
+                        <div class="job-post-item-body d-block d-md-flex">
+                        <div class="mr-3"><span class="icon-layers"></span> 
+                            <a href="#">{{ data.UserModel.CompanyDetails.company_name }}</a>
+                        </div>
+    
+                        <div>
+                            <span class="icon-my_location"></span> <span>{{ data.location }}</span>
+                        </div>
+                        </div>
+    
+                    </div>
+  
+                    <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0">
+                        <div>
+                            <a href="{% url 'Bookmark' data.id %}" class="icon text-center d-flex justify-content-center align-items-center icon mr-2">
+                                <span class="icon-heart"></span>
+                            </a>
+                        </div>
+                        <a href="{% url 'ApplyInternship' data.id %}" class="btn btn-primary py-2">Apply</a>
+                    </div>
+    
+    
+                  </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    // Get all nav links
+    var navLinks = document.querySelectorAll(".nav-link");
+
+    // Loop through each nav link
+    navLinks.forEach(function(link) {
+        // Set the text color to black
+        link.style.color = "black";
+    });
+
+    var navbarBrand = document.querySelector(".navbar-brand.leckerli-font");
+
+    // Set the text color to black
+    if (navbarBrand) {
+        navbarBrand.style.color = "black";
+    }
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'Index.html' %}
+{% load static %}
+{% block title %}Companies{% endblock %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'admin/plugins/fontawesome-free/css/all.min.css' %}">
+{% endblock %}
+
+{% block content %}
+<center style="padding-top:120px">
+    <h2>Companies</h2>
+</center>
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 pr-lg-5">
+
+                {% comment %} <div class="row justify-content-center pb-3">
+                    <div class="col-md-12 heading-section ftco-animate">
+                    <h2 class="mb-4">Companies</h2>
+
+                    </div>
+                </div> {% endcomment %}
+                        
+                <div class="col-lg-3 sidebar">
+                     {% comment %} <div class="row justify-content-center pb-3">
+                        <div class="col-md-12 heading-section ftco-animate">
+                            <h2 class="mb-4">Companies</h2>
+                        </div>
+                    </div>  {% endcomment %}
+
+                    <div class="sidebar-box ftco-animate">
+                        {% for company in companies %}
+                            <div class="">
+                                <a href="{% url 'CompanySearchInternships' company.id %}" class="company-wrap">
+                                    {% if company.CompanyDetails.companyLogo.url != null %}
+                                        <img src="{{ company.CompanyDetails.companyLogo.url }}" class="img-fluid" alt="Colorlib Free Template">    
+                                    {% else %}
+                                        <img src="{% static 'home1/images/company-1.jpg' %}" class="img-fluid" alt="Colorlib Free Template">
+                                    {% endif %}
+                                </a>
+                                <div class="text p-3">
+                                    <h3><a href="{% url 'CompanySearchInternships' company.id %}">{{ company.CompanyDetails.company_name }}</a></h3>
+                                    <p><span class="number">{{ company.i_count }}</span> <span>Open Internships</span></p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    // Get all nav links
+    var navLinks = document.querySelectorAll(".nav-link");
+
+    // Loop through each nav link
+    navLinks.forEach(function(link) {
+        // Set the text color to black
+        link.style.color = "black";
+    });
+
+    var navbarBrand = document.querySelector(".navbar-brand.leckerli-font");
+
+    // Set the text color to black
+    if (navbarBrand) {
+        navbarBrand.style.color = "black";
+    }
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'Index.html' %}
+{% load static %}
+{% block title %}Industries{% endblock %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'admin/plugins/fontawesome-free/css/all.min.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 heading-section text-center ftco-animate">
+                
+                <h2 class="mb-0">Industries</h2>
+            </div>
+        </div>
+        
+        <div class="row">
+          {% for data1 in industries %}
+              <div class="col-md-3 ftco-animate">
+                  <ul class="category text-center">
+                      <li><a href="{% url 'IndustrySearchInternships' data1.id %}">{{ data1.name }} <br><i class="ion-ios-arrow-forward"></i></a></li>
+                  </ul>
+              </div>
+          {% endfor %}
+        </div>
+    </div>
+</section>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    // Get all nav links
+    var navLinks = document.querySelectorAll(".nav-link");
+
+    // Loop through each nav link
+    navLinks.forEach(function(link) {
+        // Set the text color to black
+        link.style.color = "black";
+    });
+
+    var navbarBrand = document.querySelector(".navbar-brand.leckerli-font");
+
+    // Set the text color to black
+    if (navbarBrand) {
+        navbarBrand.style.color = "black";
+    }
+    });
+</script>
+{% endblock %}

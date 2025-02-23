@@ -1,0 +1,56 @@
+{% extends '../Layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Unverified Internships{% endblock %}
+{% block head %}  
+
+{% endblock %}
+
+{% block open-internship %}nav-item menu-open {% endblock %}
+{% block open-edit3 %}nav-link active {% endblock %}
+
+{% block subtitle %}
+<h1><b>Unverified Internships</b></h1>
+{% endblock %}
+
+{% block content %}
+<table class="table table-bordered" id="example1">
+    <thead>
+        <tr>
+            <th style="width: 4%"><center> Id </center></th>
+            <th style="width: auto"><center> Title </center></th>
+            <th style="width: auto"><center> Location </center></th>
+            <th style="width: auto"><center> Type </center></th>
+            <th style="width: auto"><center> Skills </center></th>
+            <th style="width: auto"><center> Description </center></th>
+            <th style="width: auto"><center> Stipend </center></th>
+            <th style="width: auto"><center> Status </center></th>
+            <th style="width: auto"><center> Industry </center></th>
+            <th style="width: auto"><center> Company Name </center></th>
+            <th style="width: auto"><center> Action </center></th>           
+        </tr>
+    </thead>
+    <tbody>
+        {% for data in internships %}
+            <tr>
+                <td><center> {{ data.id }} </center></td>
+                <td><center> {{ data.title }} </center></td>
+                <td><center> {{ data.location }} </center></td>
+                <td><center> {{ data.type }} </center></td>
+                <td><center> {{ data.skills }} </center></td>
+                <td><center> {{ data.description }} </center></td>
+                <td><center> {{ data.stipend }} </center></td>
+                <td><center> {{ data.status }} </center></td>
+                <td><center> {{ data.IndustryModel.name }} </center></td>
+                <td><center> {{ data.UserModel.CompanyDetails.company_name }} </center></td>
+                <td>
+                    <center>  
+                        <a href="{% url 'VerifyInternship' data.id %}" class="btn btn-success btn-sm " style="font-size:18px"> Approve </i></a>
+                    </center>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock  %}
